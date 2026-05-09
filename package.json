@@ -26,6 +26,7 @@
     "build": "npm run build:lib && npm run build:demo",
     "build:demo": "vite build --outDir demo-dist",
     "build:lib": "vite build --config vite.lib.config.ts && tsc -p tsconfig.lib.json",
+    "prepare": "npm run build:lib",
     "lint": "eslint .",
     "preview": "vite preview --outDir demo-dist",
     "storybook": "storybook dev -p 6006",
@@ -34,9 +35,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "clsx": "^2.1.1"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -59,6 +58,8 @@
     "eslint-plugin-storybook": "^10.3.5",
     "globals": "^17.5.0",
     "jsdom": "^29.1.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "storybook": "^10.3.5",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
