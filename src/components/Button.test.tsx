@@ -11,4 +11,14 @@ describe('Button', () => {
 
     expect(onClick).toHaveBeenCalledTimes(1)
   })
+
+  it('renders an anchor when href is provided', () => {
+    render(
+      <Button href="#/resume" variant="secondary">
+        View resume
+      </Button>,
+    )
+
+    expect(screen.getByRole('link', { name: /view resume/i })).toHaveAttribute('href', '#/resume')
+  })
 })
