@@ -399,6 +399,7 @@
   padding: 0 1rem;
   border: 1px solid transparent;
   background: transparent;
+  text-decoration: none;
   font-size: var(--kz-type-label-size);
   line-height: var(--kz-line-height);
   font-weight: var(--kz-type-label-weight);
