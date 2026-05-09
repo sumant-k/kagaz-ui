@@ -22,6 +22,9 @@ export type KagazSharedTheme = {
       textTransform: string
     }
     headings: {
+      common: {
+        lineHeight: string
+      }
       h1: HeadingTypographyStyle
       h2: HeadingTypographyStyle
       h3: HeadingTypographyStyle
@@ -112,6 +115,9 @@ export const defaultTheme: KagazTheme = {
         textTransform: 'uppercase',
       },
       headings: {
+        common: {
+          lineHeight: '1',
+        },
         h1: {
           fontSize: 'clamp(2.25rem, 4.8vw, 3.375rem)',
           fontWeight: '600',

@@ -52,42 +52,42 @@
 
 .kz-theme-root h1 {
   font-size: var(--kz-type-h1-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h1-weight);
   letter-spacing: var(--kz-type-h1-spacing);
 }
 
 .kz-theme-root h2 {
   font-size: var(--kz-type-h2-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h2-weight);
   letter-spacing: var(--kz-type-h2-spacing);
 }
 
 .kz-theme-root h3 {
   font-size: var(--kz-type-h3-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h3-weight);
   letter-spacing: var(--kz-type-h3-spacing);
 }
 
 .kz-theme-root h4 {
   font-size: var(--kz-type-h4-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h4-weight);
   letter-spacing: var(--kz-type-h4-spacing);
 }
 
 .kz-theme-root h5 {
   font-size: var(--kz-type-h5-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h5-weight);
   letter-spacing: var(--kz-type-h5-spacing);
 }
 
 .kz-theme-root h6 {
   font-size: var(--kz-type-h6-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h6-weight);
   letter-spacing: var(--kz-type-h6-spacing);
 }
@@ -243,7 +243,7 @@
 
 .kz-theme-root .kz-app__title {
   font-size: var(--kz-type-h1-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h1-weight);
   letter-spacing: var(--kz-type-h1-spacing);
   max-width: 11ch;
@@ -716,7 +716,7 @@
 
 .kz-theme-root .kz-drawer__title {
   font-size: var(--kz-type-h2-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h2-weight);
   letter-spacing: var(--kz-type-h2-spacing);
 }
@@ -745,7 +745,7 @@
 
 .kz-theme-root .kz-page-header__title {
   font-size: var(--kz-type-h2-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h2-weight);
   letter-spacing: var(--kz-type-h2-spacing);
   max-width: 12ch;
@@ -784,7 +784,7 @@
   margin: 0;
   font-family: var(--kz-font-serif);
   font-size: var(--kz-type-h2-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h2-weight);
   letter-spacing: var(--kz-type-h2-spacing);
   color: var(--kz-ink);
@@ -952,7 +952,7 @@
 
 .kz-theme-root .kz-detail-pane__title {
   font-size: var(--kz-type-h4-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h4-weight);
   letter-spacing: var(--kz-type-h4-spacing);
 }
@@ -979,7 +979,7 @@
 
 .kz-theme-root .kz-state-card__title {
   font-size: var(--kz-type-h3-size);
-  line-height: var(--kz-line-height);
+  line-height: var(--kz-type-heading-line-height);
   font-weight: var(--kz-type-h3-weight);
   letter-spacing: var(--kz-type-h3-spacing);
 }
