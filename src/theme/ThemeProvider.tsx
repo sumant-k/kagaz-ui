@@ -46,6 +46,7 @@ function themeToStyle(theme: KagazTheme, mode: KagazThemeMode): CSSProperties {
     '--kz-type-label-weight': theme.shared.typography.label.fontWeight,
     '--kz-type-label-spacing': theme.shared.typography.label.letterSpacing,
     '--kz-type-label-transform': theme.shared.typography.label.textTransform,
+    '--kz-type-heading-line-height': theme.shared.typography.headings.common.lineHeight,
     '--kz-type-h1-size': theme.shared.typography.headings.h1.fontSize,
     '--kz-type-h1-weight': theme.shared.typography.headings.h1.fontWeight,
     '--kz-type-h1-spacing': theme.shared.typography.headings.h1.letterSpacing,

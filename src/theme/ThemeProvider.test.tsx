@@ -16,6 +16,7 @@ describe('ThemeProvider', () => {
     expect(root).toHaveStyle(`--kz-bg: ${defaultTheme.light.color.bg}`)
     expect(root).toHaveStyle(`--kz-font-size-base: ${defaultTheme.shared.baseFontSize}`)
     expect(root).toHaveStyle(`--kz-radius: ${defaultTheme.shared.radius}`)
+    expect(root).toHaveStyle(`--kz-type-heading-line-height: ${defaultTheme.shared.typography.headings.common.lineHeight}`)
     expect(root).toHaveStyle(`--kz-type-h1-size: ${defaultTheme.shared.typography.headings.h1.fontSize}`)
     expect(root).toHaveStyle(`--kz-type-body-size: ${defaultTheme.shared.typography.body.fontSize}`)
     expect(root).toHaveAttribute('data-kz-theme-mode', 'light')
@@ -66,6 +67,9 @@ describe('ThemeProvider', () => {
             radius: '6px',
             typography: {
               headings: {
+                common: {
+                  lineHeight: '1.05',
+                },
                 h1: {
                   fontSize: '3rem',
                 },
@@ -82,6 +86,7 @@ describe('ThemeProvider', () => {
 
     expect(root).toHaveStyle('--kz-font-size-base: 18px')
     expect(root).toHaveStyle('--kz-radius: 6px')
+    expect(root).toHaveStyle('--kz-type-heading-line-height: 1.05')
     expect(root).toHaveStyle('--kz-type-h1-size: 3rem')
   })
 })

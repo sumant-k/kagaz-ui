@@ -15,6 +15,9 @@ const sampleThemeOverride: ThemeProviderProps['theme'] = {
         fontSize: '0.5625rem',
       },
       headings: {
+        common: {
+          lineHeight: '1',
+        },
         h1: {
           fontSize: '2.5rem',
         },
