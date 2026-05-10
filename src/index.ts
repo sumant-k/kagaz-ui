@@ -1,3 +1,5 @@
+export { Anchor } from './components/Anchor'
+export type { AnchorProps } from './components/Anchor'
 export { Button } from './components/Button'
 export type { ButtonProps } from './components/Button'
 export { Input } from './components/Input'
