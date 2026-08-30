@@ -2,23 +2,48 @@
 
 ## Purpose
 
-`kagaz-ui` is a separate React + TypeScript + Vite design-system/workbench repo with Storybook and Vitest.
-It is visually aligned to the portfolio's paper/editorial direction, but it is not the portfolio repo and should be worked on independently.
+`kagaz-ui` is a separate React + TypeScript + Vite design-system/workbench repo.
+It uses Storybook, Vitest, React Testing Library, and `clsx`.
+It is visually aligned to the portfolio's paper/editorial direction, but it remains an independent library repo.
 
-## What We Changed
+## Repo Status
 
-### Theme system
+- Path: `C:\Users\admin-user\Desktop\DEV\kagaz-ui`
+- Git branch: `main`
+- Remote: `https://github.com/sumant-k/kagaz-ui`
+- First integration tag already exists: `v0.1.0`
+- Current notable commits:
+  - `ae6bf1e feat: initialize kagaz ui workbench`
+  - `dddae75 chore: prepare package for git installs`
+  - `e59f0f0 feat: add shared heading line height token`
+  - `dd8df99 feat: support link buttons`
 
-- The theme is scoped through `ThemeProvider`.
-- `ThemeProvider` imports the library stylesheet and applies all theme variables to `.kz-theme-root`.
-- The root export does not force a global app-wide stylesheet outside the provider subtree.
-- Overlay components are expected to render into the provider-owned portal host, not raw `document.body`.
-- Theme line-height is now a single global token: `shared.lineHeight`.
-- Heading, body, label, and small text now inherit that global line-height through `--kz-line-height`.
+## Package / Git Install Setup
 
-### Theme token shape
+The library is currently consumed from GitHub as a git dependency, not from npm.
 
-Current shared theme shape:
+Important package decisions:
+
+- `package.json` includes `prepare: npm run build:lib`
+- `dist/` is generated, not committed
+- `exports` point to built `dist` files
+- `files` includes `dist`
+- `react` and `react-dom` are peer dependencies
+- `react` and `react-dom` are also present in dev dependencies for local development and `prepare`
+- `clsx` remains a runtime dependency
+
+## Theme System
+
+### Scope and ownership
+
+- The theme is scoped through `ThemeProvider`
+- `ThemeProvider` imports the library stylesheet and applies all theme variables to `.kz-theme-root`
+- The root export does not force global styling outside the provider subtree
+- Overlay components should render into the provider-owned portal host, not raw `document.body`
+
+### Current theme token shape
+
+Shared theme:
 
 - `shared.baseFontSize`
 - `shared.lineHeight`
@@ -28,73 +53,31 @@ Current shared theme shape:
 - `shared.typography.body`
 - `shared.typography.small`
 - `shared.typography.label`
+- `shared.typography.headings.common`
 - `shared.typography.headings.h1` to `h6`
 - `shared.spacing`
 - `shared.motion`
 
-Current mode theme shape:
+Mode theme:
 
 - `light.color`
 - `dark.color`
 
-Important cleanup already done:
+### Important theme decisions
 
-- Removed the old nested `shared.typography.baseFontSize`.
-- Removed per-variant `lineHeight` fields from body, small, label, and headings.
-- Storybook sample theme data was updated to match the current theme contract.
-- Invalid sample-only theme keys like `accent` were removed.
+- Default `shared.baseFontSize` is `16px`
+- Default global `shared.lineHeight` is `1.7`
+- Headings now have their own shared rhythm token:
+  - `shared.typography.headings.common.lineHeight`
+- Default heading line-height is `1`
+- Heading-bearing library surfaces use the heading line-height token instead of the body line-height token
 
-### Current base sizing decision
+This means:
 
-- `shared.baseFontSize` is now `16px` in the default theme.
-- The library had many `rem` values authored when the working assumption was effectively `1rem = 10px`.
-- Those authored `rem` values were recalibrated so the rendered visual sizes stay close to the prior look after moving the base size to `16px`.
-- Example:
-  - old label size: `1rem` at `10px` base
-  - new label size: `0.9rem` at `16px` base
+- labels, body text, helper text, chips, and similar content still use `shared.lineHeight`
+- headings, article titles, page headers, drawer titles, detail pane titles, and similar heading surfaces use `headings.common.lineHeight`
 
-### Storybook integration
-
-- Storybook wraps stories with `ThemeProvider` in `.storybook/preview.ts`.
-- Storybook global toolbar controls exist for:
-  - `themeMode`: `light` / `dark`
-  - `themePreset`: `default`, `compact`, `roomy`, `contrast`
-- Theme presets live in `.storybook/themePresets.ts`.
-- The dedicated theme playground story lives in `src/theme/ThemeProvider.stories.tsx`.
-
-Important Storybook behavior:
-
-- Kagaz theme styles are scoped to `.kz-theme-root`.
-- Inspecting Storybook's outer `body` will show Storybook's own shell styles, not Kagaz theme styles.
-- To inspect Kagaz styles, inspect the preview iframe content and the `.kz-theme-root` element inside a story.
-
-### Component work covered in this session chain
-
-- Added and stabilized `Chips`.
-- Renamed the old card-like pattern into `Article`.
-- `Article` styling now uses `kz-article*` class names.
-- Fixed the chip border token bug so `.kz-chip` uses `var(--kz-border)`.
-- Pushed more editorial UI styles onto theme tokens instead of hardcoded one-off values.
-
-## Current Source Of Truth
-
-### Theme and provider
-
-- `src/tokens/theme.ts`
-- `src/theme/ThemeProvider.tsx`
-- `src/theme/themeContext.ts`
-
-### Main scoped styles
-
-- `src/styles/index.css`
-
-### Storybook
-
-- `.storybook/preview.ts`
-- `.storybook/themePresets.ts`
-- `src/theme/ThemeProvider.stories.tsx`
-
-## Current Theme Defaults
+## Current Defaults
 
 From `src/tokens/theme.ts`:
 
@@ -104,8 +87,9 @@ From `src/tokens/theme.ts`:
 - `shared.typography.body.fontSize: 0.9rem`
 - `shared.typography.small.fontSize: 0.8125rem`
 - `shared.typography.label.fontSize: 0.9rem`
+- `shared.typography.headings.common.lineHeight: 1`
 
-Current heading scale:
+Heading scale:
 
 - `h1: clamp(2.25rem, 4.8vw, 3.375rem)`
 - `h2: clamp(1.875rem, 4vw, 2.625rem)`
@@ -114,7 +98,7 @@ Current heading scale:
 - `h5: 1.125rem`
 - `h6: 0.9375rem`
 
-Current spacing scale:
+Spacing scale:
 
 - `space1: 0.5rem`
 - `space2: 0.75rem`
@@ -123,6 +107,72 @@ Current spacing scale:
 - `space5: 1.5rem`
 - `space6: 2rem`
 - `space7: 3rem`
+
+## Storybook
+
+- Stories are wrapped with `ThemeProvider` in `.storybook/preview.ts`
+- Toolbar controls:
+  - `themeMode`: `light` / `dark`
+  - `themePreset`: `default`, `compact`, `roomy`, `contrast`
+- Theme presets live in `.storybook/themePresets.ts`
+- The dedicated playground is `src/theme/ThemeProvider.stories.tsx`
+
+Important Storybook behavior:
+
+- Kagaz styles are scoped to `.kz-theme-root`
+- Storybook manager `body` styles are Storybook shell styles, not Kagaz styles
+- To inspect Kagaz styling, inspect the preview iframe and the `.kz-theme-root` inside it
+
+Known non-blocker:
+
+- `npm run build-storybook` succeeds but still emits a large chunk-size warning
+
+## Current Components / Patterns Added Or Refined
+
+### Chips
+
+- `Chips` exists and is stable
+- `.kz-chip` correctly uses `var(--kz-border)`
+- visual direction is square/editorial, not pill-like
+
+### Article
+
+- `Article` is the renamed and stabilized version of the older card-like pattern
+- internal CSS uses `kz-article*`
+- it is already being used in the portfolio for featured and side project cards
+
+### Button
+
+`Button` now supports both button and anchor rendering:
+
+- button mode: regular `button`
+- link mode: pass `href` and it renders an anchor with button styling
+
+This was added specifically to let portfolio CTA actions move onto a real library primitive instead of custom anchor classes.
+
+## Current Source Of Truth
+
+Theme and provider:
+
+- `src/tokens/theme.ts`
+- `src/theme/ThemeProvider.tsx`
+- `src/theme/themeContext.ts`
+
+Scoped styles:
+
+- `src/styles/index.css`
+
+Component / pattern files heavily involved in this work:
+
+- `src/components/Button.tsx`
+- `src/components/Chips.tsx`
+- `src/patterns/Article.tsx`
+
+Storybook:
+
+- `.storybook/preview.ts`
+- `.storybook/themePresets.ts`
+- `src/theme/ThemeProvider.stories.tsx`
 
 ## Verification Runbook
 
@@ -133,6 +183,7 @@ npm run lint
 npm test
 npm run build
 npm run build-storybook
+npm pack --dry-run
 ```
 
 Expected status:
@@ -140,26 +191,39 @@ Expected status:
 - `lint` passes
 - `test` passes
 - `build` passes
-- `build-storybook` passes
+- `build-storybook` passes with the known chunk-size warning
+- `npm pack --dry-run` shows a healthy package payload
 
-Known non-blocker:
+## Portfolio Integration Status
 
-- Storybook build still emits a large chunk-size warning, but the build succeeds.
+The portfolio repo already consumes this library from GitHub.
 
-## Known Notes And Guardrails
+Current integration facts:
 
-- `kagaz-ui` is not a git repo yet.
-- Do not do this work in the portfolio repo.
-- Keep theme styling scoped unless there is an explicit product decision to add a separate global baseline component.
-- If Storybook looks unthemed at the app-shell level, check whether you are inspecting Storybook manager UI instead of the themed preview subtree.
-- If you change `shared.baseFontSize` again, you must decide whether to keep the visual sizes stable. If yes, authored `rem` values need to be recalibrated consistently across:
+- portfolio repo path: `C:\Users\admin-user\Desktop\DEV\ai-portfolio-playground`
+- portfolio branch: `feat/kagaz-ui-implementation`
+- the portfolio currently points to a specific Kagaz git commit, not the old tag
+- `ThemeProvider` is already adopted there
+- featured project cards use `Article`
+- side project cards use `Article`
+- CTA actions now use library `Button`
+- the portfolio defines its own theme override object and passes it into `ThemeProvider`
+
+## Guardrails
+
+- Keep theme styling scoped unless there is an explicit product decision to add a separate global baseline component
+- If Storybook looks unthemed, first check whether you are inspecting Storybook manager UI instead of the themed preview subtree
+- If `shared.baseFontSize` changes again, decide explicitly whether visual sizes should stay stable
+- If the answer is yes, recalibrate authored `rem` values consistently across:
   - `src/tokens/theme.ts`
   - `.storybook/themePresets.ts`
   - `src/theme/ThemeProvider.stories.tsx`
   - `src/styles/index.css`
+- Do not casually remove the heading common line-height token; the portfolio now depends on distinct heading rhythm
 
 ## Best Next Steps
 
-- Continue visual cleanup for closer portfolio parity, especially in `Article` and other editorial surfaces.
-- Reduce remaining hardcoded values in `src/styles/index.css` where a token should clearly own the decision.
-- If needed later, introduce a separate baseline component for global page resets instead of overloading `ThemeProvider`.
+- Replace more portfolio case-study surfaces with library patterns
+- Consider introducing a small editorial meta/info panel pattern for hero sidebars and definition-list content
+- Continue reducing hardcoded values in `src/styles/index.css` where a token should clearly own the decision
+- If npm publishing is needed later, decide separately from the current git-dependency workflow
