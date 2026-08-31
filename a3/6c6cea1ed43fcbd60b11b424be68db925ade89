@@ -1,0 +1,28 @@
+src/patterns/MetaPanel.test.tsx
+  s_20885fb936a792::t_64e383819aa874 1-35
+src/patterns/MetaPanel.tsx
+  s_20885fb936a792::t_0403b35dacaefe 1-28
+src/index.ts
+  s_20885fb936a792::t_0d3c80030fd971 45-46
+src/styles/index.css
+  s_20885fb936a792::t_22a67be8918f14 1018-1062
+  s_20885fb936a792::t_5f492e85ccf7f1 1178-1190
+src/patterns/MetaPanel.stories.tsx
+  s_20885fb936a792::t_1005003e90c3d2 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "a36c6cea1ed43fcbd60b11b424be68db925ade89",
+  "prompts": {},
+  "sessions": {
+    "s_20885fb936a792": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1882711-a2f7-4e44-a50b-48184b20ae91",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Sumant Kumbhar <sumant.kumbhar@gupshup.io>"
+    }
+  }
+}
