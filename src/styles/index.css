@@ -1039,6 +1039,7 @@
 .kz-theme-root .kz-meta-panel__row {
   display: grid;
   grid-template-columns: 5.3125rem 1fr;
+  align-items: center;
   gap: 0.625rem;
   padding-top: 0.75rem;
   border-top: 1px solid var(--kz-border);
