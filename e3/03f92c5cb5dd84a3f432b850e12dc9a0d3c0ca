@@ -1,0 +1,19 @@
+src/styles/index.css
+  s_20885fb936a792::t_d339355ed4999d 1042
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "e303f92c5cb5dd84a3f432b850e12dc9a0d3c0ca",
+  "prompts": {},
+  "sessions": {
+    "s_20885fb936a792": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1882711-a2f7-4e44-a50b-48184b20ae91",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Sumant Kumbhar <sumant.kumbhar@gupshup.io>"
+    }
+  }
+}
